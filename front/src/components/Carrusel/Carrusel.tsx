@@ -14,7 +14,11 @@ interface Producto {
   href: string;
 }
 
-const PrevArrow = (props) => {
+interface ArrowProps {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const PrevArrow = (props: ArrowProps) => {
   const { onClick } = props;
   return (
     <button
@@ -26,7 +30,7 @@ const PrevArrow = (props) => {
   );
 };
 
-const NextArrow = (props) => {
+const NextArrow = (props: ArrowProps) => {
   const { onClick } = props;
   return (
     <button
