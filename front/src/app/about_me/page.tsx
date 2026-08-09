@@ -20,7 +20,7 @@ export default function AboutMe() {
           <p>Ahora, estoy buscando una oportunidad fija donde pueda seguir desarrollándome como profesional 🚀, enfrentando nuevos desafíos 💪 y aportando todo lo aprendido para contribuir a proyectos innovadores y de impacto 🌟.</p>
         </div>
         <div className="absolute text-[1.42vw] font-bold left-[17.5vw] top-[45vw] " >
-        Argentina, Buenos Aires 📍 (UTC -03:00)
+          Argentina, Buenos Aires 📍 (UTC -03:00)
         </div>
       </section>
     </div>
