@@ -112,20 +112,20 @@ export const ChatLayout: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col h-screen w-full bg-gray-900 overflow-hidden">
+    <div className="relative flex flex-col h-[100dvh] w-full bg-gray-900 overflow-hidden">
       {/* Fondo de Partículas Original */}
       <div className="absolute inset-0 z-0">
         <CoverParticles />
       </div>
 
       {/* Header flotante */}
-      <header className="absolute top-0 left-0 w-full z-20 flex justify-between items-center p-6 bg-gradient-to-b from-gray-900 to-transparent">
-        <h1 className={`${FjallaOne.className} text-white text-3xl md:text-5xl drop-shadow-xl pointer-events-none`}>
+      <header className="absolute top-0 left-0 w-full z-20 flex justify-between items-center p-4 md:p-6 bg-gradient-to-b from-gray-900 to-transparent">
+        <h1 className={`${FjallaOne.className} text-white text-2xl sm:text-3xl md:text-5xl drop-shadow-xl pointer-events-none max-w-[80%]`}>
           CASTILLO <span className="text-yellow-500">JUAN CARLOS</span>
         </h1>
         <button 
           onClick={() => setShowSettings(true)}
-          className="p-3 bg-gray-800/80 backdrop-blur-md rounded-full text-gray-300 hover:text-yellow-500 border border-gray-700 hover:border-yellow-500 transition-all z-30"
+          className="p-2 md:p-3 bg-gray-800/80 backdrop-blur-md rounded-full text-gray-300 hover:text-yellow-500 border border-gray-700 hover:border-yellow-500 transition-all z-30 flex-shrink-0"
           title="Configurar API Key"
         >
           <FaCog size={20} />
@@ -166,7 +166,7 @@ export const ChatLayout: React.FC = () => {
       )}
 
       {/* Contenedor principal del chat */}
-      <main className="relative z-10 flex-1 flex flex-col pt-20 md:pt-24 overflow-y-auto">
+      <main className="relative z-10 flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 overflow-y-auto">
         <div className="flex-1 w-full pb-4">
           {messages.map((msg) => (
             <ChatMessage key={msg.id} message={msg} />

@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ src, name, alt, href }) => {
         target="_blank" 
         rel="noopener noreferrer"
       >
-        <div style={{ position: 'relative', width: '100%', height: '240px' }}>
+        <div style={{ position: 'relative', width: '100%', height: '180px' }}>
           <Image 
             src={src} 
             alt={alt || "Project Image"} 
@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({ src, name, alt, href }) => {
             className="transform hover:scale-110 transition duration-500"
           />
         </div>
-        <div className="p-5" style={{ minHeight: '160px' }}>
+        <div className="p-4" style={{ minHeight: '120px' }}>
           <h5 className="mb-2 text-xl font-bold text-white hover:text-yellow-500 transition-colors">{name}</h5>
           <p className="text-sm text-gray-400 line-clamp-4 leading-relaxed">{alt}</p>
         </div>

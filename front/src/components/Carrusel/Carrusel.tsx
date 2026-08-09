@@ -22,7 +22,7 @@ const PrevArrow = (props: ArrowProps) => {
   const { onClick } = props;
   return (
     <button
-      className="absolute left-[-15px] top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-gray-900 backdrop-blur-md border border-gray-700 text-yellow-500 hover:bg-gray-800 hover:text-white hover:border-yellow-500 hover:scale-110 transition-all duration-300 shadow-md focus:outline-none"
+      className="absolute left-[-5px] md:left-[-15px] top-1/2 transform -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-gray-900 backdrop-blur-md border border-gray-700 text-yellow-500 hover:bg-gray-800 hover:text-white hover:border-yellow-500 hover:scale-110 transition-all duration-300 shadow-md focus:outline-none"
       onClick={onClick}
     >
       <FaChevronLeft className="ml-[-2px]" />
@@ -34,7 +34,7 @@ const NextArrow = (props: ArrowProps) => {
   const { onClick } = props;
   return (
     <button
-      className="absolute right-[-15px] top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-gray-900 backdrop-blur-md border border-gray-700 text-yellow-500 hover:bg-gray-800 hover:text-white hover:border-yellow-500 hover:scale-110 transition-all duration-300 shadow-md focus:outline-none"
+      className="absolute right-[-5px] md:right-[-15px] top-1/2 transform -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-gray-900 backdrop-blur-md border border-gray-700 text-yellow-500 hover:bg-gray-800 hover:text-white hover:border-yellow-500 hover:scale-110 transition-all duration-300 shadow-md focus:outline-none"
       onClick={onClick}
     >
       <FaChevronRight className="mr-[-2px]" />
@@ -81,7 +81,7 @@ export const Carrusel = () => {
   if (productos.length === 0) return null;
 
   return (
-    <div className="w-full max-w-2xl mx-auto py-6 px-4 md:px-10 bg-gray-800/40 backdrop-blur-md rounded-2xl border border-gray-700/50 shadow-xl relative mt-2 mb-2">
+    <div className="w-[95%] md:w-full max-w-2xl mx-auto py-4 md:py-6 px-4 md:px-10 bg-gray-800/40 backdrop-blur-md rounded-2xl border border-gray-700/50 shadow-xl relative mt-2 mb-2">
       <Slider {...settings}>
         {productos.map((producto) => (
           <div key={producto.id} className="outline-none">
