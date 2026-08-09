@@ -30,8 +30,6 @@ export const ChatLayout: React.FC = () => {
   const handleSendMessage = async (text: string) => {
     if (!text.trim()) return;
 
-    const lowerText = text.toLowerCase();
-
     // Crear mensaje del usuario
     const userMessage: MessageType = {
       id: Date.now().toString(),

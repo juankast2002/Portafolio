@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { CoverParticles } from "@/components/CoverParticles/cover-particles";
-
 
 export default function AboutMe() {
   return (
@@ -11,7 +11,13 @@ export default function AboutMe() {
         <div className='relative bg-black border border-white h-[50vw] w-[80vw] m-[1em] opacity-80'></div>
 
         <div className='flex absolute z-10 left-[16.5vw] top-[13vw] w-[30vw] h-[30vw] bg-black justify-center items-center rounded-full overflow-hidden border-2 border-white shadow-2xl'>
-          <img className="relative object-cover w-[35vw] h-[35vw] " src="https://res.cloudinary.com/dfktz8zkt/image/upload/v1727401435/WhatsApp_Image_2024-05-24_at_10.31.54_PM-fotor-bg-remover-20240926224323_ssbcug.png" />
+          <Image 
+            className="relative object-cover w-[35vw] h-[35vw]" 
+            src="https://res.cloudinary.com/dfktz8zkt/image/upload/v1727401435/WhatsApp_Image_2024-05-24_at_10.31.54_PM-fotor-bg-remover-20240926224323_ssbcug.png" 
+            alt="Foto de perfil de Juan Carlos"
+            width={500}
+            height={500}
+          />
         </div>
 
         <div className="absolute text-[1.35vw] w-[30vw] h-[25vw] right-[15.5vw] top-[8.3vw] text-center ">
