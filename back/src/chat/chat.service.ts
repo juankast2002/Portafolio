@@ -5,16 +5,18 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class ChatService {
   private readonly logger = new Logger(ChatService.name);
-  private genAI: GoogleGenerativeAI;
 
-  constructor(private configService: ConfigService) {
-    const apiKey = this.configService.get<string>('GEMINI_API_KEY') || '';
-    this.genAI = new GoogleGenerativeAI(apiKey);
-  }
+  constructor(private configService: ConfigService) {}
 
-  async generateResponse(messages, modelName: string = 'gemini-3.1-flash-lite'): Promise<{ text: string, isCustomComponent?: string | null }> {
+  async generateResponse(messages, modelName: string = 'gemini-3.1-flash-lite', clientApiKey?: string): Promise<{ text: string, isCustomComponent?: string | null }> {
     try {
       this.logger.log(`Sending messages to Gemini using model: ${modelName}`);
+
+      const finalApiKey = clientApiKey || this.configService.get<string>('GEMINI_API_KEY') || '';
+      if (!finalApiKey) {
+        throw new Error('API Key no provista. Ingresa una API Key válida en el chat.');
+      }
+      const genAI = new GoogleGenerativeAI(finalApiKey);
 
       const systemPrompt = `
 Eres la versión IA del asistente personal de Juan Carlos Castillo. Estás integrado en su portafolio web.
@@ -68,7 +70,7 @@ Reglas:
         ],
       }];
 
-      const model = this.genAI.getGenerativeModel({
+      const model = genAI.getGenerativeModel({
         model: modelName,
         systemInstruction: systemPrompt,
         tools: tools,

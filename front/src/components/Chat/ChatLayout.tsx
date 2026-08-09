@@ -5,6 +5,7 @@ import { ChatMessage, MessageType } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { CoverParticles } from '@/components/CoverParticles/cover-particles';
 import { Fjalla_One } from 'next/font/google';
+import { FaCog, FaTimes } from 'react-icons/fa';
 
 const FjallaOne = Fjalla_One({ subsets: ['latin'], weight: '400' });
 
@@ -17,7 +18,21 @@ export const ChatLayout: React.FC = () => {
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [apiKey, setApiKey] = useState('');
+  const [showSettings, setShowSettings] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const savedKey = localStorage.getItem('gemini_api_key');
+    if (savedKey) {
+      setApiKey(savedKey);
+    }
+  }, []);
+
+  const handleSaveApiKey = (key: string) => {
+    setApiKey(key);
+    localStorage.setItem('gemini_api_key', key);
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -55,7 +70,8 @@ export const ChatLayout: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: newMessages.map(msg => ({ role: msg.role, content: msg.content }))
+          messages: newMessages.map(msg => ({ role: msg.role, content: msg.content })),
+          apiKey: apiKey || undefined,
         }),
       });
 
@@ -103,11 +119,51 @@ export const ChatLayout: React.FC = () => {
       </div>
 
       {/* Header flotante */}
-      <header className="absolute top-0 left-0 w-full z-20 flex justify-between items-center p-6 bg-gradient-to-b from-gray-900 to-transparent pointer-events-none">
-        <h1 className={`${FjallaOne.className} text-white text-3xl md:text-5xl drop-shadow-xl`}>
+      <header className="absolute top-0 left-0 w-full z-20 flex justify-between items-center p-6 bg-gradient-to-b from-gray-900 to-transparent">
+        <h1 className={`${FjallaOne.className} text-white text-3xl md:text-5xl drop-shadow-xl pointer-events-none`}>
           CASTILLO <span className="text-yellow-500">JUAN CARLOS</span>
         </h1>
+        <button 
+          onClick={() => setShowSettings(true)}
+          className="p-3 bg-gray-800/80 backdrop-blur-md rounded-full text-gray-300 hover:text-yellow-500 border border-gray-700 hover:border-yellow-500 transition-all z-30"
+          title="Configurar API Key"
+        >
+          <FaCog size={20} />
+        </button>
       </header>
+
+      {/* Modal de Configuración */}
+      {showSettings && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-gray-800 border border-gray-700 rounded-2xl p-6 w-full max-w-md shadow-2xl relative">
+            <button 
+              onClick={() => setShowSettings(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+            >
+              <FaTimes size={20} />
+            </button>
+            <h2 className="text-2xl text-white font-bold mb-4 flex items-center gap-2">
+              <FaCog className="text-yellow-500" /> Configuración
+            </h2>
+            <p className="text-gray-300 text-sm mb-4">
+              Si la IA principal está inactiva, puedes ingresar tu propia <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer" className="text-yellow-500 underline">API Key de Gemini</a> para continuar interactuando.
+            </p>
+            <input 
+              type="password" 
+              placeholder="AIzaSy..." 
+              value={apiKey}
+              onChange={(e) => handleSaveApiKey(e.target.value)}
+              className="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-yellow-500 transition-colors mb-4"
+            />
+            <button 
+              onClick={() => setShowSettings(false)}
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 rounded-xl transition-colors"
+            >
+              Guardar y Cerrar
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Contenedor principal del chat */}
       <main className="relative z-10 flex-1 flex flex-col pt-20 md:pt-24 overflow-y-auto">
