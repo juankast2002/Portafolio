@@ -12,7 +12,7 @@ export class ChatService {
     this.genAI = new GoogleGenerativeAI(apiKey);
   }
 
-  async generateResponse(messages: any[], modelName: string = 'gemini-3.1-flash-lite'): Promise<{ text: string, isCustomComponent?: string | null }> {
+  async generateResponse(messages, modelName: string = 'gemini-3.1-flash-lite'): Promise<{ text: string, isCustomComponent?: string | null }> {
     try {
       this.logger.log(`Sending messages to Gemini using model: ${modelName}`);
 
@@ -83,7 +83,7 @@ Reglas:
         historyMessages.shift();
       }
 
-      const history = historyMessages.map((msg: any) => ({
+      const history = historyMessages.map((msg) => ({
         role: msg.role === 'user' ? 'user' : 'model',
         parts: [{ text: msg.content }],
       }));

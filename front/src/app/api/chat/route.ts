@@ -58,7 +58,7 @@ export async function POST(req: Request) {
     });
 
     // Formatear el historial para Gemini
-    const history = messages.slice(0, -1).map((msg: any) => ({
+    const history = messages.slice(0, -1).map((msg: { role: string, content: string }) => ({
       role: msg.role === 'user' ? 'user' : 'model',
       parts: [{ text: msg.content }],
     }));

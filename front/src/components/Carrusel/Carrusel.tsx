@@ -14,7 +14,7 @@ interface Producto {
   href: string;
 }
 
-const PrevArrow = (props: any) => {
+const PrevArrow = (props) => {
   const { onClick } = props;
   return (
     <button
@@ -26,7 +26,7 @@ const PrevArrow = (props: any) => {
   );
 };
 
-const NextArrow = (props: any) => {
+const NextArrow = (props) => {
   const { onClick } = props;
   return (
     <button
@@ -44,18 +44,18 @@ export const Carrusel = () => {
   useEffect(() => {
     const data = [
       {
-        id: 1, 
+        id: 1,
         name: "5tart Travel",
-        src: "https://res.cloudinary.com/dfktz8zkt/image/upload/v1728428007/cbey16iyadftprvqda3k.png", 
-        alt: "Proyecto grupal: desarrollo de un marketplace especializado en la compra y venta de viajes. La plataforma permite a los usuarios explorar, publicar y adquirir experiencias de viaje, facilitando la conexión entre agencias y viajeros de manera eficiente e intuitiva.", 
-        href: "https://5tart-travel-front-w2ip.vercel.app/" 
+        src: "https://res.cloudinary.com/dfktz8zkt/image/upload/v1728428007/cbey16iyadftprvqda3k.png",
+        alt: "Proyecto grupal: desarrollo de un marketplace especializado en la compra y venta de viajes. La plataforma permite a los usuarios explorar, publicar y adquirir experiencias de viaje, facilitando la conexión entre agencias y viajeros de manera eficiente e intuitiva.",
+        href: "https://5tart-travel-front-w2ip.vercel.app/"
       },
       {
-        id: 2, 
+        id: 2,
         name: "Las Divas De Romi",
-        src: "https://res.cloudinary.com/dfktz8zkt/image/upload/v1732223080/ynlk1fioljxs2krzlhq3.png", 
-        alt:"Es un eCommerce de productos y cursos online una plataforma que permite la compra de productos físicos y digitales, como productos, así como el acceso a cursos en línea en diversas áreas. Los usuarios pueden comprar de manera fácil y segura, con pagos electrónicos y acceso inmediato a los cursos. (EN PROCESO)", 
-        href: "https://personal-woad-phi.vercel.app/" 
+        src: "https://res.cloudinary.com/dfktz8zkt/image/upload/v1732223080/ynlk1fioljxs2krzlhq3.png",
+        alt: "Es un eCommerce de productos y cursos online una plataforma que permite la compra de productos físicos y digitales, como productos, así como el acceso a cursos en línea en diversas áreas. Los usuarios pueden comprar de manera fácil y segura, con pagos electrónicos y acceso inmediato a los cursos. (EN PROCESO)",
+        href: "https://personal-woad-phi.vercel.app/"
       }
     ];
     setProductos(data);
@@ -90,7 +90,7 @@ export const Carrusel = () => {
           </div>
         ))}
       </Slider>
-      
+
       <style>{`
         .slick-dots li button:before {
           color: #9ca3af !important;
