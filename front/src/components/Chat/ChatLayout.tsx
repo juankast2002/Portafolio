@@ -118,17 +118,17 @@ export const ChatLayout: React.FC = () => {
         <CoverParticles />
       </div>
 
-      {/* Header flotante */}
-      <header className="absolute top-0 left-0 w-full z-20 flex justify-between items-center p-4 md:p-6 bg-gradient-to-b from-gray-900 to-transparent">
-        <h1 className={`${FjallaOne.className} text-white text-2xl sm:text-3xl md:text-5xl drop-shadow-xl pointer-events-none max-w-[80%]`}>
+      {/* Header fijo con desenfoque de fondo y borde sutil */}
+      <header className="relative z-20 flex justify-between items-center px-4 py-3 md:px-8 md:py-4 bg-gray-900/90 backdrop-blur-md border-b border-gray-800/80 shadow-lg flex-shrink-0">
+        <h1 className={`${FjallaOne.className} text-white text-2xl sm:text-3xl md:text-4xl drop-shadow-xl pointer-events-none max-w-[80%]`}>
           CASTILLO <span className="text-yellow-500">JUAN CARLOS</span>
         </h1>
         <button 
           onClick={() => setShowSettings(true)}
-          className="p-2 md:p-3 bg-gray-800/80 backdrop-blur-md rounded-full text-gray-300 hover:text-yellow-500 border border-gray-700 hover:border-yellow-500 transition-all z-30 flex-shrink-0"
+          className="p-2 md:p-2.5 bg-gray-800/90 backdrop-blur-md rounded-full text-gray-300 hover:text-yellow-500 border border-gray-700 hover:border-yellow-500 transition-all z-30 flex-shrink-0 shadow-md"
           title="Configurar API Key"
         >
-          <FaCog size={20} />
+          <FaCog size={18} />
         </button>
       </header>
 
@@ -166,7 +166,7 @@ export const ChatLayout: React.FC = () => {
       )}
 
       {/* Contenedor principal del chat */}
-      <main className="relative z-10 flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 overflow-y-auto">
+      <main className="relative z-10 flex-1 flex flex-col pt-4 overflow-y-auto">
         <div className="flex-1 w-full pb-4">
           {messages.map((msg) => (
             <ChatMessage key={msg.id} message={msg} />
