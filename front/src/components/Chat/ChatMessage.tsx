@@ -52,7 +52,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
 
           {message.isCustomComponent === 'cv' && (
             <div className="mt-6">
-              <Link href="././cv_22052024 (4).pdf" download>
+              <Link href="/Castillo-Juan-Carlos-CV-actual-05_09_2026.docx" download="Castillo-Juan-Carlos-CV.docx">
                 <div className="inline-flex items-center text-gray-900 px-6 py-3 bg-yellow-500 border-2 border-yellow-500 rounded-xl transition duration-200 transform hover:scale-105 shadow-xl font-bold">
                   Descargar CV
                 </div>

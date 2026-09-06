@@ -3,7 +3,7 @@ import { ChatService } from './chat.service';
 
 @Controller('chat')
 export class ChatController {
-  constructor(private readonly chatService: ChatService) { }
+  constructor(private readonly chatService: ChatService) {}
 
   @Post()
   async generateChat(
@@ -17,8 +17,15 @@ export class ChatController {
     console.log('Messages:', messages);
 
     try {
-      const response = await this.chatService.generateResponse(messages, model, apiKey);
-      return { message: response.text, isCustomComponent: response.isCustomComponent };
+      const response = await this.chatService.generateResponse(
+        messages,
+        model,
+        apiKey,
+      );
+      return {
+        message: response.text,
+        isCustomComponent: response.isCustomComponent,
+      };
     } catch (error) {
       return { error: 'Failed to generate response', details: error.message };
     }
